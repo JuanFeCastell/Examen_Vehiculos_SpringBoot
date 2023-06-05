@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="jquery-3.6.4.min.js"></script>
+    <script src="js/funcion.js"></script>
+    <script src="css/style.css"></script>
+    <style>
+.Container {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    background-color: #e6f7ff; /* Cambiar el color de fondo a un tono de azul claro */
+    height: 110;
+    padding: 1rem;
+}
+
+h2 {
+    padding: 1rem;
+}
+
+label {
+    font-weight: bold;
+    color: #333; /* Cambiar el color de texto de las etiquetas a negro */
+}
+
+.icon-select {
+    position: relative;
+    display: inline-block;
+}
+
+.icon-select select {
+    width: 200px;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    color: #333;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.icon-select i {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #333;
+}
+
+.resultadoCotizacion {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.resultadoCotizacion th,
+.resultadoCotizacion td {
+    text-align: center;
+}
+
+body {
+    font-family: Arial, sans-serif; /* Cambiar el tipo de letra a Arial */
+}
+    </style>
+    <title>EVALUACION VENTAS</title>
+</head>
+<body>
+<br><br><br>
+<h2 class="text-center">CRUD</h2>
+<hr>
+<div class="Container">
+    <br>
+
+
+    <form>
+        <br>
+        <br>
+        <h3 class="mb-0">CLIENTES LISTADOS 📄 <br> [Direccion->Nombre->Telefono] </h3><br>
+        <div class="custom-select">
+            <select class="clienteListados form-select-lg mb-3"  aria-label="multiple select example"></select>
+        </div>
+        <br>
+        <br>
+        <hr>
+        <br>
+        <h3 class="mb-0">VENTAS 🤑💵 <br>[Fecha->Documento->Vehiculo->Modelo]</h3><br>
+        <select class="selectVen form-select" aria-label="multiple select example"></select>
+    </form>
+    <br>
+    <hr>
+    <h2 class="text-center">Agregar Venta </h2>
+    <form class="agregarForm">
+        <div class="form-group">
+            <label for="documento">Documento Cliente 🥸:</label>
+            <br>
+            <div class="text-center p-1 m-2" style="background-color: rgba(0, 0, 0, 0.2);">
+                Lista de Clientes:
+                <a class="text-white " href="http://localhost:8080/listarCliente" target="_blank">Cliente</a>
+            </div>
+            <input type="text" class="form-control documento" name="documento" required>
+        </div>
+        <div class="form-group">
+            <label for="codigoVeh">Código Vehiculo 🚙:</label>
+            <br>
+            <div class="text-center p-1 m-2" style="background-color: rgba(0, 0, 0, 0.2);">
+                Lista de Vehiculos:
+                <a class="text-white" href="http://localhost:8080/listarVehiculos" target="_blank">Vehiculos</a>
+            </div>
+            <input type="text" class="form-control codigoVeh" name="codigoVeh" required>
+        </div>
+        <br>
+        <div class="form-group text-center">
+            <input type="submit" value="Agregar Cotización" class="btn btn-secondary">
+        </div>
+
+    </form>
+    <hr>
+
+
+
+    <h2 class="text-center">Buscar por codigo de Venta 🔍</h2>
+    <form class="buscarForm">
+        <div class="form-group">
+            Lista de Vehiculos:
+            <a class="text-black" href="http://localhost:8080/detallesVentas" target="_blank">Más Detalles de Ventas 📜</a>
+            <input type="number" class="form-control codigoVen" name="codigoVen" required>
+        </div><br>
+        <div class="form-group text-center">
+            <input type="submit" value="Buscar Ventas" class="btn btn-secondary">
+        </div>
+    </form>
+    <br>
+    <table class="resultadoVentas table table-bordered">
+        <thead>
+        <tr>
+            <th>Codigo Vent</th>
+
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <br>
+
+    <br>
+    <br>
+    <h2 class="text-center">Eliminar Venta ❌❗</h2>
+    <form class="eliminarForm">
+        <div class="form-group">
+            <label for="codigoVen">Codigo de Venta:</label>
+            <input type="number" class="form-control eliminarcodigoVen" name="codigoVen" required>
+        </div><br>
+        <div class="form-group text-center">
+            <input type="submit" value="Eliminar Venta" class="btn btn-secondary">
+        </div>
+    </form>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+</body>
+</html>
